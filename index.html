@@ -6,6 +6,22 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="s.css">
+  <style>
+          #output {
+          background-color:#F9F9F9;
+          padding:10px;
+          width: 100%;
+          margin-top:20px;
+          line-height:30px;
+      }
+      .hide {
+          display:none;
+      }
+      .show {
+          display:block;
+      }
+    </style>
+  </style>
 </head>
 
 <body>
@@ -14,6 +30,45 @@
     <form onSubmit="return chatbot.sendMessage()">
       <div class="text-box">
         <input type="text" name="message" id="message" autocomplete="off" disabled placeholder="Please wait... loading...">
+        <p><button type="button" onclick="runSpeechRecognition()">M</button> &nbsp; <span id="action"></span></p>
+        <div id="output" class="hide"></div>
+    <script>
+      /* JS comes here */
+        function runSpeechRecognition() {
+            // get output div reference
+            $(document).ready(function(){
+            navigator.mediaDevices.getUserMedia({audio: true})
+            });
+            var output = document.getElementById("output");
+            // get action element reference
+            var action = document.getElementById("action");
+                // new speech recognition object
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+            
+                // This runs when the speech recognition service starts
+                recognition.onstart = function() {
+                };
+                
+                recognition.onspeechend = function() {
+                    recognition.stop();
+                }
+              
+                // This runs when the speech recognition service returns result
+                recognition.onresult = function(event) {
+                    var transcript = event.results[0][0].transcript;
+                    var confidence = event.results[0][0].confidence;
+                    document.getElementById
+                            ("message").value = transcript;
+                    if (transcript.length > 0) {
+                      chatbot.sendMessage()
+                    }
+                };
+              
+                 // start recognition
+                 recognition.start();
+          }
+    </script>
         <input class="send-button" type="submit" value=">">
       </div>
     </form>
