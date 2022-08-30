@@ -714,3 +714,11 @@
 
 + [*] oyo [*]
 - If you forgot,I am a robot.You cannot go oyo with me.
+
++ suggest [*] (movie|movies)
+- Here are my personal suggestions: TITANIC (1997) \n DILWALE DULHANIA LE JAYENGE (1995) \n MEAN GIRLS (2004) \n SPIDER-MAN: INTO THE SPIDERVERSE \n RRR \n SeethaRamam \n Jalsa \n Pokiri \n DearZindagi 
+
++ [*] (movie|movies)
+- I too love movies.
+- I like movies very much.
+- Shall we go to a movie?
