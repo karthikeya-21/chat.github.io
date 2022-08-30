@@ -624,7 +624,7 @@
 - You have a particular reason in mind, don't you?
 - Who do you think you're talking about?
 
-+ [*] (fuck|fucker|shit|damn|shut up|bitch) [*]
++ [*] (fuck|fucker|shit|damn|shut up|bitch|lick|dick|suck) [*]
 - Does it make you feel strong to use that kind of language?
 - Are you venting your feelings now?
 - Are you angry?
@@ -658,6 +658,8 @@
 + google *
 - Google Search: <call>google <star></call>
 
++ play *
+- <call>youtube <star></call>
 // If the user ends their message with "or something", the
 // bot will simply say "Or something." and drop the topic.
 + * or something
@@ -668,6 +670,11 @@
 	var query = escape(args.join(" "));
 	return "<a href=\"http://www.google.com/search?q=" + query + "\">Click Here!</a>";
 < object
+> object youtube javascript
+	var query = escape(args.join(" "));
+	return "<a href=\"http://www.youtube.com/search?q=" + query + "\">Open Youtube!</a>";
+< object
+
 + what is your (home|office|cell) phone number
 - You can call my <star> number at 9998877665.
 
@@ -702,5 +709,8 @@
 * <get age> >= 18 => Vote.
 * <get age> <  18 => Not much of anything
 
-+ why (am i|i am|do you think i am) single
++ why (am i|i am|do you think i am) [*] single
 - Bot wants to open your front cam.
+
++ [*] oyo [*]
+- If you forgot,I am a robot.You cannot go oyo with me.
