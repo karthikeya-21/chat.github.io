@@ -1,38 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <title>Chatbot</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="s.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">  
-  <style>
-          #output {
-          background-color:#F9F9F9;
-          padding:10px;
-          width: 100%;
-          margin-top:20px;
-          line-height:30px;
-      }
-      .hide {
-          display:none;
-      }
-      .show {
-          display:block;
-      }
-    </style>
   </style>
 </head>
 
 <body>
   <div class='wrapper'>
     <div id="dialogue"></div>
+    <script>
+
+    </script>
     <form onSubmit="return chatbot.sendMessage()">
       <div class="text-box">
         <input type="text" name="message" id="message" autocomplete="off" disabled placeholder="Please wait... loading...">
-        <p><button type="button" onclick="runSpeechRecognition()"><span id="boot-icon" class="bi bi-mic" style="font-size:1rem"></span></button> &nbsp; <span id="action"></span></p>
-        <div id="output" class="hide"></div>
     <script>
       /* JS comes here */
         function runSpeechRecognition() {
@@ -61,15 +48,16 @@
                     var confidence = event.results[0][0].confidence;
                     document.getElementById
                             ("message").value = transcript;
+                    
                     if (transcript.length > 0) {
                       chatbot.sendMessage()
                     }
                 };
-              
                  // start recognition
                  recognition.start();
           }
     </script>
+        <p><button id="mic" type="button" onclick="runSpeechRecognition()" style="color: black ; "><span id="boot-icon" class="bi bi-mic" style="font-size:1rem; flex: 1; margin-bottom: 5"></span></button> &nbsp; <span id="action"></span></p>
         <input class="send-button" type="submit" value=">">
       </div>
     </form>
