@@ -6,6 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="s.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">  
   <style>
           #output {
           background-color:#F9F9F9;
@@ -30,7 +31,7 @@
     <form onSubmit="return chatbot.sendMessage()">
       <div class="text-box">
         <input type="text" name="message" id="message" autocomplete="off" disabled placeholder="Please wait... loading...">
-        <p><button type="button" onclick="runSpeechRecognition()">M</button> &nbsp; <span id="action"></span></p>
+        <p><button type="button" onclick="runSpeechRecognition()"><span id="boot-icon" class="bi bi-mic" style="font-size:1rem"></span></button> &nbsp; <span id="action"></span></p>
         <div id="output" class="hide"></div>
     <script>
       /* JS comes here */
