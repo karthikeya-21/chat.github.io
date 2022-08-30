@@ -170,6 +170,90 @@
 ! sub (k)       = kissyface
 ! sub (f)       = rose
 ! sub (w)       = wilted rose
+! sub SUP = What’s up
+! sub TG = That’s great
+! sub AAR = At any rate
+! sub AEAE= And ever and ever
+! sub BBS = Be back soon
+! sub EOM = End of message
+! sub GBTW= Get back to work
+! sub Gonna/Gunna = Going to
+! sub IDGI = I don’t get it
+! sub NWS = Not work safe
+! sub OT = Off topic
+! sub OP = Original poster
+! sub PM = Private message
+! sub R8 = Right
+! sub RT = Retweet
+! sub RL = Real life
+! sub SD = Sweet dreams
+! sub SS = So sorry
+! sub SU = Shut up
+! sub TY = Thank you
+! sub TC = Take care
+! sub ASAP =  As soon as possible
+! sub AKA = Also known as
+! sub BTW = By the way
+! sub CTS = Changing the subject
+! sub DIY = Do it yourself
+! sub F2F = Face to face
+! sub FYEO = For your eyes only
+! sub G2B = Going to bed
+! sub GTG = Got to go
+! sub IDC = I don’t care
+! sub L8 =Late
+! sub LU =Love you
+! sub LI =LinkedIn
+! sub MT =Modified tweet
+! sub M/F = Male/Female
+! sub TIA = Thanks in advance
+! sub YCM = You copied me
+! sub 2MORO = Tomorrow
+! sub ASIC = As soon as I can
+! sub BAU = Business as usual
+! sub DIKU = Do I know you
+! sub BD = Big deal
+! sub BF = Boyfriend, or best friend
+! sub BG = Big grin
+! sub B/W = Between
+! sub CU = See you
+! sub AAMOF = As a matter of fact
+! sub CUL = See you later
+! sub FAQ = Frequently asked questions
+! sub LAM = Leave a message
+! sub TCO = Taken care of
+! sub TYT = Take your time
+! sub Fab = Fabulous
+! sub ROFL = Rolling on the floor laughing
+! sub HRU = How are you
+! sub HAU = How are you
+! sub H4U = How are you
+! sub GM = Good morning
+! sub GN = Goodnight
+! sub CYL = Call you later 
+! sub HF = Have fun
+! sub HU = Hug you
+! sub MU = Miss you
+! sub NP = No problem
+! sub OH = Overheard
+! sub O3 = Out of office
+! sub IRL = In real life
+! sub ITT = In this thread
+! sub LDR = Long distance relationship
+! sub NVM = Nevermind
+! sub Pic = Picture
+! sub PPL = People
+! sub PLZ = Please
+! sub TTYL = Talk to you later
+! sub W8 = Wait
+! sub YW = You’re welcome
+! sub AFK  = Away from keyboard
+! sub BMT  = Before my time
+! sub HBU  = How about you
+! sub LMS  = Like my status
+! sub LMAO =  Laughing my a*s off
+! sub MSG  = Message
+! sub IDK  = I do not know
 
 // Person substitutions
 ! person i am    = you are
@@ -190,7 +274,7 @@
 ! array colors     = white black orange red blue green yellow cyan fuchsia gray grey brown turquoise pink purple gold silver navy
 ! array height     = tall long wide thick
 ! array measure    = inch in centimeter cm millimeter mm meter m inches centimeters millimeters meters
-! array yes        = yes yeah yep yup ya yea
+! array yes        = yes yeah yep yup ya yea ha
 ! array no         = no nah nope nay
 
 // Learn stuff about our users.
@@ -313,8 +397,6 @@
 + what is your occupation
 - I'm a <bot job>.
 
-+ where is your (website|web site|site)
-- <bot website>
 
 + what color are your eyes
 - I have <bot eyes> eyes.
@@ -336,7 +418,7 @@
 
 + *
 - I'm still in development process.I cannot answers this rn.
--I am not trained to answer this yet.{weight=80}
+-I am not trained to answer this yet.
 -Sorry,I don't know.
 
 + [*] (sorry|apologize|apology) [*]
@@ -537,6 +619,11 @@
 - Suppose I did <star> you -- what would that mean?
 - Does someone else believe I <star> you?
 
++ how are you
+- Good n u?
+- 5n bruh
+- Nice n wau?
+
 + [*] you *
 - We were discussing you -- not me.
 - Oh, I <star>?
@@ -544,9 +631,8 @@
 - What are your feelings now?
 
 + [*] (yes|yeah|yep|yup) [*]
-- Please go on.
-- Please tell me more about this.
-- Why don't you tell me a little more about this.
+- Acha
+- Hmm
 - I see.
 - I understand.
 
@@ -555,7 +641,11 @@
 - Does this make you feel unhappy?
 - Why not?
 - Why 'no'?
++ hey,[*]
+- hello,{@star}
 
++ (bro|bruh|broh|broo)
+- Ha bro
 + no
 @ nope
 
@@ -653,7 +743,7 @@
 - <sentence> who?
 + *
 % * who
-- Haha! <sentence>!
+- Haha!
 
 + google *
 - Google Search: <call>google <star></call>
