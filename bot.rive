@@ -335,11 +335,9 @@
 // A generic set of chatting responses. This set mimicks the classic Eliza bot.
 
 + *
-- I'm not sure I understand you fully.
-- Please go on.
-- That is interesting. Please continue.
-- Tell me more about that.
-- Does talking about this bother you?
+- I'm still in development process.I cannot answers this rn.
+-I am not trained to answer this yet.{weight=80}
+-Sorry,I don't know.
 
 + [*] (sorry|apologize|apology) [*]
 - Please don't apologize.
@@ -408,8 +406,8 @@
 - How likely, would you estimate?
 
 + (hello|hi|hey|howdy|hola|hai|yo) [*]
-- How do you do. Please state your problem.
-- Hi. What seems to be your problem?
+- How do you do.
+- Hi. What's up?
 
 + [*] computer [*]
 - Do computers worry you?
@@ -634,11 +632,19 @@
 - Is something making you feel angry?
 - Does using that kind of language make you feel better?
 
++ tell me a joke
+- When I see lovers' names carved in a tree, I don't think it's sweet. I just think it's surprising 	how many people bring a knife on a date.
+- A chubbier woman: Mirror, Mirror on the wall, who’s the fairest of them all? \n - Mirror: “Kindly  move aside. I can’t see anything.”
+- My old aunts would come and tease me at weddings, “Well Sarah? Do you think you’ll be next?” \n We settled this quickly once I started doing the same to them at funerals.
+- Can a kangaroo jump higher than a house? \n - Of course, a house doesn’t jump at all.
+
+
 + tell me a poem
-- There once was a man named Tim,\\s
-^ who never quite learned how to swim.\\s
-^ He fell off a dock, and sank like a rock,\\s
+- There once was a man named Tim,\n
+^ who never quite learned how to swim.\n
+^ He fell off a dock, and sank like a rock,\n
 ^ and that was the end of him
+
 
 + knock knock
 - Who's there?
@@ -648,6 +654,7 @@
 + *
 % * who
 - Haha! <sentence>!
+
 + google *
 - Google Search: <call>google <star></call>
 
@@ -656,8 +663,7 @@
 + * or something
 - Or something.
 
-// Here is the Google search object. We'll cover objects in more
-// depth later in the tutorial.
+
 > object google javascript
 	var query = escape(args.join(" "));
 	return "<a href=\"http://www.google.com/search?q=" + query + "\">Click Here!</a>";
@@ -679,7 +685,7 @@
 + (happy|merry) (christmas|xmas|valentines day|thanksgiving)
 - Wow! Is it really <star2> already?
 
-+ *girlfriend*
++ [*] girlfriend [*]
 - i'd love to be your girlfriend.
 - Don't worry! I can be your GirlFriend.
 + play song *
@@ -695,3 +701,6 @@
 * <get age> >= 21 => Drink.
 * <get age> >= 18 => Vote.
 * <get age> <  18 => Not much of anything
+
++ why (am i|i am|do you think i am) single
+- Bot wants to open your front cam.
