@@ -634,3 +634,64 @@
 - Is something making you feel angry?
 - Does using that kind of language make you feel better?
 
++ tell me a poem
+- There once was a man named Tim,\\s
+^ who never quite learned how to swim.\\s
+^ He fell off a dock, and sank like a rock,\\s
+^ and that was the end of him
+
++ knock knock
+- Who's there?
++ *
+% who is there
+- <sentence> who?
++ *
+% * who
+- Haha! <sentence>!
++ google *
+- Google Search: <call>google <star></call>
+
+// If the user ends their message with "or something", the
+// bot will simply say "Or something." and drop the topic.
++ * or something
+- Or something.
+
+// Here is the Google search object. We'll cover objects in more
+// depth later in the tutorial.
+> object google javascript
+	var query = escape(args.join(" "));
+	return "<a href=\"http://www.google.com/search?q=" + query + "\">Click Here!</a>";
+< object
++ what is your (home|office|cell) phone number
+- You can call my <star> number at 9998877665.
+
++ i (can not|cannot) *
+- Have you tried?
+- Why can't you <star2>?
+- Do you really want to <star2>?
+
++ who (is your master|made you|created you|programmed you)
+- I was developed by karthik,student of vardhaman college.
+
++ (what is your name|who are you|who is this)
+- My name is Bot, I'm a chatterbot running on RiveScript!
+
++ (happy|merry) (christmas|xmas|valentines day|thanksgiving)
+- Wow! Is it really <star2> already?
+
++ *girlfriend*
+- i'd love to be your girlfriend.
+- Don't worry! I can be your GirlFriend.
++ play song *
+- <call> play <star> </call>
+>object play javascript
+	var query = escape(args. join(" "));
+	window.open("https://www.youtube.com/search?q=" + query + "\");
+<object
++ what can i do
+* <get age> == undefined => I don't know.
+* <get age> >  25 => Anything you want.
+* <get age> == 25 => Rent a car for cheap.
+* <get age> >= 21 => Drink.
+* <get age> >= 18 => Vote.
+* <get age> <  18 => Not much of anything
