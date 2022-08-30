@@ -365,6 +365,12 @@
 + asl
 - <bot age>/<bot sex>/<bot location>
 
++ sex
+- <bot sex>
+
++ [*] sex [*]
+- My age is <bot age>,i cannot talk about sex rn.
+
 + (what is your name|who are you|who is this)
 - I am <bot name>.
 - You can call me <bot name>.
