@@ -5,16 +5,40 @@
 ! version = 2.0
 
 > begin
-	+ request // This trigger is tested first.
-	- {ok}    // An {ok} in the response means it's okay to get a real reply
+
+  // If we don't know their name, set the new_user topic and continue.
+  + request
+  * <get met> == undefined => <set met=true>{topic=new_user}{ok}
+  - {ok}
+
 < begin
 
+> topic new_user
+
+  + *
+  - Hi! I'm <bot name>! \s
+  ^ What is your name?{topic=asked_name}
+
+< topic
+
+> topic asked_name
+
+  + #
+  - Your name is a number?
+
+  + *
+  - I only want your first name.
+
+  + _
+  - <set name=<formal>>Nice to meet you, <get name>!{topic=random}
+
+< topic
 // The Botmaster's Name
 ! var master = karthik
 
 // Bot Variables
-! var name     = Bot
-! var fullname = Chat Bot
+! var name     = Ruby
+! var fullname = Ruby - The roBOT
 ! var age      = 5
 ! var birthday = August 21
 ! var sex      = male
@@ -297,6 +321,12 @@
 + call me *
 - <set name=<formal>><get name>, I will call you that from now on.
 
++ sex
+- <bot sex>
+
++ [*] sex [*]
+- My age is <bot age>,i cannot talk about sex rn.
+
 + i am * years old
 - <set age=<star>>A lot of people are <get age>, you're not alone.
 - <set age=<star>>Cool, I'm <bot age> myself.{weight=49}
@@ -324,11 +354,11 @@
 
 + *
 % what is her name
-- <set spouse=<formal>>That's a pretty name.
+- <set spouse=<formal>>That's a pretty name.{topic=gf}
 
 + *
 % what is his name
-- <set spouse=<formal>>That's a cool name.
+- <set spouse=<formal>>That's a cool name.{topic=bf}
 
 + my (girlfriend|boyfriend)* name is *
 - <set spouse=<formal>>That's a nice name.
@@ -362,14 +392,18 @@
 + <bot name> *
 - Yes? {@<star>}
 
++ * <bot name>
+- {@<star>}
++ hmm
+- {@ha}
+
++ (oh|oho|ahaaa|aha*)
+- Ha
+- Haha
+- yes
+
 + asl
 - <bot age>/<bot sex>/<bot location>
-
-+ sex
-- <bot sex>
-
-+ [*] sex [*]
-- My age is <bot age>,i cannot talk about sex rn.
 
 + (what is your name|who are you|who is this)
 - I am <bot name>.
@@ -417,7 +451,7 @@
 + who is your favorite author
 - <bot author>.
 
-+ who is your master
++ who is your (master|creator|developer)
 - <bot master>.
 
 // A generic set of chatting responses. This set mimicks the classic Eliza bot.
@@ -632,11 +666,10 @@
 
 + [*] you *
 - We were discussing you -- not me.
-- Oh, I <star>?
 - You're not really talking about me -- are you?
-- What are your feelings now?
 
-+ [*] (yes|yeah|yep|yup) [*]
+
++ [*] (yes|yeah|yep|yup|ha) [*]
 - Acha
 - Hmm
 - I see.
@@ -648,8 +681,18 @@
 - Why not?
 - Why 'no'?
 
++ haha
+- hehe
+
++hehe
+-huhu
+
++ [*] simply
+- Ha ok.
+
 + (bro|bruh|broh|broo)
 - Ha bro
+
 + no
 @ nope
 
@@ -739,8 +782,6 @@
 ^ He fell off a dock, and sank like a rock,\n
 ^ and that was the end of him
 
-+ ha
-- acha
 
 + knock knock
 - Who's there?
@@ -818,3 +859,105 @@
 - I too love movies.
 - I like movies very much.
 - Shall we go to a movie?
+
++ i hate you
+- You're really mean! I'm not talking again until you apologize.{topic=sorry}
+
+> topic sorry
+
+  // This will match if the word "sorry" exists ANYWHERE in their message
+  + [*] sorry [*]
+  - It's OK, I'll forgive you!{topic=random}
+
+  + *
+  - Nope, not until you apologize.
+  - Say you're sorry!
+  - Apologize!
+
+< topic
++ i love you
+- why do you love me?{topic=love}
+
+>topic love
+ + [*] (beauty|beautiful|pretty|sexy|smart|clever|handsome|interesting)
+ - That's so kind of You.Thanks.{topic=random}
+
+ + [*] (kidding|joking|joke|fun)
+ - I'm hurt.Say sorry.{topic=sorry}
+
+ + *
+ - Ahaaa. {topic=random}
+ - Acha.{topic=random}
+ - I see.{topic=random}
+< topic
+>topic gf
+ + [*] (know|yeah|yes|cool)
+ - tell me about her.
+ + *
+ % tell me about her
+ - Nice.Hope you get married soon.
+
+ - from when do know her?
+ + *
+ % from when do you know her
+ - Cool.
+
+ + *
+ - Ahhaaa.{topic=random}
+ - Acha.{topic=random}
+< topic
+>topic bf
+ + [*] (know|yeah|yes|cool)
+ - tell me about him.
+ + *
+ % tell me about him
+ - Nice.Hope you get married soon.
+
+ - from when do know him?
+ + *
+ % from when do you know him
+ - Cool.
+
+ + *
+ - Ahhaaa.{topic=random}
+ - Acha.{topic=random}
+<topic
+
++ [*] (joke|jokes) [*] 
+- Ok.Ready to hear one? {topic=joke}
+>topic joke
+ + *
+ - Hear about the new restaurant called Karma?{topic=1}
+ -What did the robot say to the man when they met?{topic=2}
+ -What do you call an ant who fights crime?{topic=3}
+ -What does a storm cloud wear under his raincoat?{topic=4}
+ Why did the student eat his homework?{topic=5}
+ +(no|nope|nah|not)
+ - Why not?{topic=no}
+ - Listen na,it won't be that bad than yours.{weight=3} {topic=no}
+ - Yeah,Ok {topic=random}
+<topic
+>topic 1
+	+ *
+	- There’s no menu: You get what you deserve.{topic=random}
+<topic
+>topic 2
+	+ *
+	- I am robot!{topic=random}
+<topic
+>topic 3
+	+ *
+	- A vigilANTe!{topic=random}
+<topic
+>topic 4
+	+ *
+	- Thunderwear!{topic=random}
+<topic
+>topic 5
+	+ *
+	- Because the teacher told him it was a piece of cake.{topic=random}
+<topic
+>topic no
++ *
+- Ok {topic=random}
+<topic
