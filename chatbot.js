@@ -71,7 +71,8 @@ var chatbot = {
         reply = reply.replace(/\n/g, "<br>");
         this.postReply(reply);
         let utterance = new SpeechSynthesisUtterance(reply);
-         utterance.voice = voice || voices[48];
+        var voices = window.speechSynthesis.getVoices();
+        utterance.voice = voices[1];
         speechSynthesis.speak(utterance);
       },
       reason => {
